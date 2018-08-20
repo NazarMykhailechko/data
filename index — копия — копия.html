@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>my home page</title>
+</head>
+
+<body>
+
+<button name="btn" onclick="getInfo()">push me</button>
+<button name="btn" onclick="getAjax()">loadCurrency</button>
+
+<div id="elem"></div>
+<div id="id01"></div>
+
+</body>
+
+
+
+<script>
+
+function getInfo() {
+document.getElementById("elem").innerHTML = "Hello!!!"
+}
+
+
+function getAjax() {
+
+var xhttp = new XMLHttpRequest();
+  if("withCredentials" in xhttp){
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+
+     document.getElementById("id01").innerHTML = this.responseText;
+    }
+  }
+
+  //xhttp.open("get", "https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json", true);
+  //xhttp.send();
+
+   // Firefox 3.5 and Safari 4
+   xhttp.open("get", "https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json", true);
+   xhttp.send();
+  }
+
+}
+
+</script>
+
+</html>
